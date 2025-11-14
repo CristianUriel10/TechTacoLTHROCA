@@ -13,18 +13,26 @@
   <body>
     <main class="page">
       <section class="card">
-        <header class="card__header">
-          <h1>Registro para red pública</h1>
-          <p>
-            Completa el formulario para acceder a la red Wi-Fi. Usamos estos datos solo para mantener un registro de uso.
-          </p>
+        <header class="brand">
+          <img
+            src="./assets/logo-grupo-roca.png"
+            alt="Logo Grupo Roca"
+            class="brand__logo brand__logo--roca"
+          />
+          <span class="brand__divider" aria-hidden="true"></span>
+          <img src="./assets/logo-lth.png" alt="Logo LTH" class="brand__logo brand__logo--lth" />
         </header>
 
+        <div class="card__header">
+          <p class="eyebrow">RedTechTaco_LTHROCA</p>
+          <h1>Conexión segura para clientes Grupo Roca + LTH</h1>
+          <p>
+            Déjanos tu correo y teléfono para registrar tu acceso. Guardamos la información en
+            Firebase y la usamos solo para el control interno de la red.
+          </p>
+        </div>
+
         <form id="registration-form" class="form" novalidate>
-          <label class="form__field">
-            <span>Nombre completo</span>
-            <input type="text" id="fullName" name="fullName" autocomplete="name" required />
-          </label>
           <label class="form__field">
             <span>Correo electrónico</span>
             <input type="email" id="email" name="email" autocomplete="email" required />
@@ -32,10 +40,6 @@
           <label class="form__field">
             <span>Teléfono</span>
             <input type="tel" id="phone" name="phone" autocomplete="tel" required />
-          </label>
-          <label class="form__checkbox">
-            <input type="checkbox" id="terms" name="terms" required />
-            <span>Acepto los términos de uso de la red.</span>
           </label>
           <button type="submit" class="button">
             <span class="button__text">Registrarme</span>
@@ -45,16 +49,19 @@
         </form>
 
         <section id="wifi-credentials" class="wifi" hidden>
-          <h2>¡Listo!</h2>
-          <p>Conéctate usando las credenciales:</p>
+          <h2>¡Registro exitoso!</h2>
+          <p>
+            Ya te puedes conectar a nuestra red <strong>RedTechTaco_LTHROCA</strong>. La contraseña es
+            <strong>TacoLTHR0!2025</strong>.
+          </p>
           <dl>
             <div>
               <dt>Nombre de red (SSID)</dt>
-              <dd id="wifi-ssid">TechTaco_Public</dd>
+              <dd id="wifi-ssid">RedTechTaco_LTHROCA</dd>
             </div>
             <div>
               <dt>Contraseña</dt>
-              <dd id="wifi-password">tac0-2025!</dd>
+              <dd id="wifi-password">TacoLTHR0!2025</dd>
             </div>
           </dl>
         </section>

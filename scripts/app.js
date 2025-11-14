@@ -1,12 +1,11 @@
 const firebaseConfig = {
-  apiKey: "YOUR_FIREBASE_API_KEY",
-  authDomain: "YOUR_FIREBASE_AUTH_DOMAIN",
-  projectId: "YOUR_FIREBASE_PROJECT_ID",
-  storageBucket: "YOUR_FIREBASE_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_FIREBASE_MESSAGING_SENDER_ID",
-  appId: "YOUR_FIREBASE_APP_ID"
+  apiKey: "AIzaSyBK5304WT8Ozel2tgBrtDGZUigiR5T0Ht0",
+  authDomain: "techtacolthroca.firebaseapp.com",
+  projectId: "techtacolthroca",
+  storageBucket: "techtacolthroca.firebasestorage.app",
+  messagingSenderId: "579061670376",
+  appId: "1:579061670376:web:58f0104856280e1f8a845d",
 };
-
 /**
  * Initializes Firebase app safely.
  * @returns {firebase.firestore.Firestore | null}
@@ -62,10 +61,8 @@ const handleSubmit = async (event) => {
 
   const data = new FormData(form);
   const validation = window.validateFields({
-    fullName: data.get("fullName"),
     email: data.get("email"),
     phone: data.get("phone"),
-    termsAccepted: Boolean(data.get("terms"))
   });
 
   if (!validation.valid) {
@@ -78,13 +75,14 @@ const handleSubmit = async (event) => {
 
   try {
     await db.collection("publicNetworkRegistrations").add({
-      fullName: data.get("fullName").trim(),
       email: data.get("email").trim(),
       phone: data.get("phone").trim(),
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
 
-    showMessage("Registro guardado. Disfruta la red.");
+    showMessage(
+      "Registro guardado. Ya puedes conectarte a RedTechTaco_LTHROCA."
+    );
     wifiEl.hidden = false;
     form.reset();
   } catch (error) {

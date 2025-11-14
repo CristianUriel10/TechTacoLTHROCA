@@ -1,11 +1,13 @@
 :root {
-  --color-bg: #0f172a;
-  --color-card: #1e293b;
-  --color-border: #334155;
-  --color-text: #f8fafc;
-  --color-muted: #cbd5f5;
-  --color-accent: #38bdf8;
-  --color-error: #f87171;
+  --color-bg: #030a16;
+  --color-card: #0f1d31;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-text: #f6f7fb;
+  --color-muted: #d5dde9;
+  --color-accent: #00954c;
+  --color-accent-strong: #d22730;
+  --color-accent-secondary: #005cab;
+  --color-error: #ff6b6b;
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
   --space-md: 1.5rem;
@@ -21,7 +23,8 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top, #1d4ed8, var(--color-bg) 60%);
+  background: radial-gradient(circle at 20% 20%, rgba(0, 149, 76, 0.45), transparent 60%),
+    radial-gradient(circle at 80% 0%, rgba(210, 39, 48, 0.5), transparent 55%), var(--color-bg);
   color: var(--color-text);
   display: flex;
   align-items: center;
@@ -34,17 +37,58 @@ body {
 }
 
 .card {
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(5, 14, 28, 0.9);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: var(--space-lg);
   backdrop-filter: blur(18px);
-  box-shadow: 0 20px 45px rgba(2, 6, 23, 0.6);
+  box-shadow: 0 35px 60px rgba(3, 7, 18, 0.65);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.brand__logo {
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+.brand__logo--roca {
+  max-width: 140px;
+}
+
+.brand__logo--lth {
+  max-width: 120px;
+}
+
+.brand__divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-strong));
+  border-radius: 999px;
 }
 
 .card__header {
   text-align: center;
   margin-bottom: var(--space-lg);
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 0.25rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background: rgba(0, 92, 171, 0.15);
+  color: var(--color-accent-secondary);
+  margin-bottom: var(--space-sm);
 }
 
 .card__header h1 {
@@ -78,27 +122,15 @@ body {
   padding: var(--space-sm);
   border-radius: var(--radius);
   border: 1px solid var(--color-border);
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--color-text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form__field input:focus {
-  outline: 2px solid var(--color-accent);
-  border-color: transparent;
-}
-
-.form__checkbox {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  font-size: 0.95rem;
-  color: var(--color-muted);
-}
-
-.form__checkbox input {
-  width: 1rem;
-  height: 1rem;
-  accent-color: var(--color-accent);
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(0, 149, 76, 0.2);
 }
 
 .button {
@@ -108,8 +140,8 @@ body {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  background: linear-gradient(120deg, #38bdf8, #6366f1);
-  color: var(--color-bg);
+  background: linear-gradient(120deg, var(--color-accent), var(--color-accent-strong));
+  color: #fff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -149,6 +181,7 @@ body {
   margin: 0;
   font-size: 0.95rem;
   color: var(--color-muted);
+  text-align: center;
 }
 
 .form__message--error {
@@ -158,7 +191,7 @@ body {
 .wifi {
   margin-top: var(--space-lg);
   padding-top: var(--space-lg);
-  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .wifi dl {
@@ -176,6 +209,7 @@ body {
   margin: var(--space-xs) 0 var(--space-md);
   font-size: 1.1rem;
   font-weight: 600;
+  color: var(--color-accent-secondary);
 }
 
 @keyframes spin {

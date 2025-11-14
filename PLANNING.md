@@ -15,8 +15,14 @@ submission completes successfully.
 
 ## Styling Guidelines
 
-- Keep layout responsive with a single-column form.
-- Use CSS variables for colors and spacing to keep the theme consistent.
+- Mantain a single-column responsive layout focused on conversions.
+- Use CSS variables with the Grupo Roca + LTH palette:
+  - Verde corporativo `#00954c`
+  - Rojo LTH `#d22730`
+  - Azul acento `#005cab`
+  - Gris grafito `#2c2c2c`
+- Showcase both logos in the hero/header area with adequate spacing and
+  alt-text for accessibility.
 - Keep files under 300 lines by splitting CSS/JS where necessary.
 
 ## Data Flow
@@ -31,4 +37,3 @@ submission completes successfully.
 
 - Add basic Jest + Testing Library coverage for the validation helper.
 - Manual verification of Firestore writes using Firebase Emulator or console.
-

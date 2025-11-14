@@ -1,7 +1,8 @@
 # TechTaco Public Network Registration
 
-Formulario estático que guarda registros en Firebase Firestore y revela la
-contraseña de la red pública tras una inscripción exitosa.
+Formulario estático con branding Grupo Roca + LTH que guarda correo y teléfono
+en Firebase Firestore y, tras el registro, muestra el mensaje:
+“Ya te puedes conectar a RedTechTaco_LTHROCA. La contraseña es TacoLTHR0!2025”.
 
 ## Puesta en marcha
 
@@ -25,9 +26,11 @@ npx serve .
 
 ## Estructura
 
-- `index.html`: Marca principal y formulario.
+- `index.html`: Marca principal, logos y formulario.
 - `styles/main.css`: Estilos y tema.
 - `scripts/app.js`: Lógica de validación y escritura en Firestore.
+- `scripts/validation.js`: Helper reutilizable (navegador + Jest).
+- `assets/`: Carpeta para colocar `logo-grupo-roca.png` y `logo-lth.png`.
 - `PLANNING.md`, `USER-FLOW.md`, `TASK.md`: Documentación base del proyecto.
 
 ## Pruebas
@@ -42,6 +45,6 @@ Las pruebas usan Jest y cubren:
 
 - Caso exitoso con datos válidos.
 - Caso borde con correos inválidos.
-- Caso de error cuando no se aceptan los términos.
+- Caso de error cuando el teléfono no cumple el mínimo de dígitos.
 
 Integra este comando en tu pipeline de CI antes de publicar cambios.
