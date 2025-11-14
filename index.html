@@ -30,6 +30,9 @@
         </header>
 
         <div class="card__header">
+          <p id="returning-banner" class="banner" hidden>
+            Ya registraste tu visita. ¡Gracias por regresar!
+          </p>
           <p class="eyebrow">RedTechTaco_LTHROCA</p>
           <h1>Conexión segura Grupo Roca + LTH + TechTaco</h1>
           <p>
@@ -77,6 +80,20 @@
               <dd id="wifi-password">TacoLTHR0!2025</dd>
             </div>
           </dl>
+          <div class="wifi__actions">
+            <button type="button" id="copy-password" class="button button--ghost">
+              Copiar contraseña
+            </button>
+            <p id="copy-feedback" class="copy-feedback" role="status"></p>
+          </div>
+        </section>
+
+        <section id="thank-you" class="thanks" hidden>
+          <h2>¡Gracias por tu visita!</h2>
+          <p>
+            Tu sesión quedó registrada. Cuando necesites conectarte de nuevo, solo vuelve a abrir esta
+            página y estaremos listos para ayudarte.
+          </p>
         </section>
       </section>
     </main>

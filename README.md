@@ -1,8 +1,10 @@
 # TechTaco Public Network Registration
 
 Formulario estático con branding Grupo Roca + LTH + TechTaco que guarda correo
-y, opcionalmente, teléfono en Firebase Firestore y, tras el registro, muestra el
-mensaje:
+y, opcionalmente, teléfono e IP pública en Firebase Firestore, muestra las
+credenciales con un botón para copiar la contraseña y finaliza con una pantalla
+de agradecimiento tras el copiado. También detecta visitas recurrentes para
+avisar que el dispositivo ya se registró.
 “Ya te puedes conectar a RedTechTaco_LTHROCA. La contraseña es TacoLTHR0!2025”.
 
 ## Puesta en marcha
@@ -27,7 +29,7 @@ npx serve .
 
 ## Estructura
 
-- `index.html`: Marca principal, logos y formulario.
+- `index.html`: Marca principal, logos, formulario y pantallas de estado.
 - `styles/main.css`: Estilos y tema.
 - `scripts/app.js`: Lógica de validación y escritura en Firestore.
 - `scripts/validation.js`: Helper reutilizable (navegador + Jest).
@@ -49,5 +51,12 @@ Las pruebas usan Jest y cubren:
 - Caso borde con correos inválidos.
 - Caso exitoso sin teléfono.
 - Caso de error cuando el teléfono proporcionado no cumple el mínimo de dígitos.
+
+## Notas adicionales
+
+- El cliente usa `https://api.ipify.org?format=json` para obtener la IP
+  pública; asegúrate de permitir esa solicitud saliente (HTTPS) o reemplázala
+  por tu propio servicio.
+- Recuerda actualizar tu aviso de privacidad si almacenarás IPs.
 
 Integra este comando en tu pipeline de CI antes de publicar cambios.

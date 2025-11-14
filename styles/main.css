@@ -91,6 +91,15 @@ body {
   margin-bottom: var(--space-lg);
 }
 
+.banner {
+  background: rgba(244, 197, 66, 0.1);
+  border: 1px solid rgba(244, 197, 66, 0.4);
+  color: var(--color-taco);
+  padding: var(--space-sm);
+  border-radius: var(--radius);
+  margin-bottom: var(--space-sm);
+}
+
 .eyebrow {
   display: inline-block;
   padding: 0.25rem 0.85rem;
@@ -177,6 +186,12 @@ body {
   transform: translateY(-2px);
 }
 
+.button--ghost {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 .button__spinner {
   width: 1rem;
   height: 1rem;
@@ -213,6 +228,20 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+.wifi__actions {
+  margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  align-items: center;
+}
+
+.copy-feedback {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
 .wifi dl {
   margin: 0;
 }
@@ -229,6 +258,19 @@ body {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--color-accent-secondary);
+}
+
+.thanks {
+  text-align: center;
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(107, 77, 255, 0.08);
+}
+
+.thanks h2 {
+  margin: 0 0 var(--space-sm);
 }
 
 @keyframes spin {
