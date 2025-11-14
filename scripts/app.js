@@ -36,6 +36,7 @@ const thankYouEl = document.getElementById("thank-you");
 const copyPasswordBtn = document.getElementById("copy-password");
 const copyFeedbackEl = document.getElementById("copy-feedback");
 const returningBanner = document.getElementById("returning-banner");
+const verificationMessage = document.getElementById("verification-message");
 
 let clientIp = null;
 
@@ -58,6 +59,19 @@ const showMessage = (text, isError = false) => {
   messageEl.classList.toggle("form__message--error", isError);
 };
 
+const hideVerificationMessage = () => {
+  if (verificationMessage) {
+    verificationMessage.hidden = true;
+  }
+};
+
+const showVerificationMessage = (text) => {
+  if (verificationMessage) {
+    verificationMessage.textContent = text;
+    verificationMessage.hidden = false;
+  }
+};
+
 const markLocalRegistration = () => {
   try {
     localStorage.setItem(LOCAL_STORAGE_KEY, "true");
@@ -78,6 +92,7 @@ const showReturningState = () => {
   if (returningBanner) {
     returningBanner.hidden = false;
   }
+  hideVerificationMessage();
   form.hidden = true;
   wifiEl.hidden = true;
   if (thankYouEl) {
@@ -89,6 +104,7 @@ const showThankYouScreen = () => {
   if (wifiEl) {
     wifiEl.hidden = true;
   }
+  hideVerificationMessage();
   if (thankYouEl) {
     thankYouEl.hidden = false;
   }
@@ -151,6 +167,8 @@ const checkExistingRegistration = async (ip) => {
 };
 
 const evaluateReturningVisitor = async () => {
+  showVerificationMessage("Verificando tu registro anterior...");
+
   if (hasLocalRegistration()) {
     showReturningState();
     return;
@@ -158,6 +176,8 @@ const evaluateReturningVisitor = async () => {
 
   clientIp = await fetchClientIp();
   if (!clientIp) {
+    hideVerificationMessage();
+    form.hidden = false;
     return;
   }
 
@@ -165,6 +185,9 @@ const evaluateReturningVisitor = async () => {
   if (alreadyRegistered) {
     markLocalRegistration();
     showReturningState();
+  } else {
+    hideVerificationMessage();
+    form.hidden = false;
   }
 };
 

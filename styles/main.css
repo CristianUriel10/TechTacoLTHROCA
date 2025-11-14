@@ -91,6 +91,12 @@ body {
   margin-bottom: var(--space-lg);
 }
 
+.status-message {
+  margin: var(--space-sm) 0 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
 .banner {
   background: rgba(244, 197, 66, 0.1);
   border: 1px solid rgba(244, 197, 66, 0.4);

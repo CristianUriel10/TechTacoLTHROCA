@@ -39,9 +39,12 @@
             Déjanos tu correo y, si lo deseas, tu teléfono para confirmar tu acceso. Guardamos la
             información en Firebase y la usamos solo para el control interno de la red.
           </p>
+          <p id="verification-message" class="status-message">
+            Verificando tu registro anterior...
+          </p>
         </div>
 
-        <form id="registration-form" class="form" novalidate>
+        <form id="registration-form" class="form" novalidate hidden>
           <label class="form__field">
             <span>Correo electrónico</span>
             <input type="email" id="email" name="email" autocomplete="email" required />
