@@ -1,0 +1,11 @@
+{
+  "name": "techtaco-public-network",
+  "version": "1.0.0",
+  "description": "Registro para red pública con Firestore",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

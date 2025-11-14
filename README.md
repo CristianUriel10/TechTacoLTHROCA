@@ -7,7 +7,13 @@ contraseña de la red pública tras una inscripción exitosa.
 
 1. Crea un proyecto Firebase y habilita Firestore (modo production o test).
 2. Copia tus credenciales en `scripts/app.js` dentro de `firebaseConfig`.
-3. Sirve los archivos con cualquier servidor estático:
+3. Instala dependencias para poder ejecutar pruebas:
+
+```bash
+npm install
+```
+
+4. Sirve los archivos con cualquier servidor estático:
 
 ```bash
 npx serve .
@@ -26,8 +32,16 @@ npx serve .
 
 ## Pruebas
 
-El repositorio aún no incluye configuración de Jest. Para cubrir validaciones
-rápidamente, extrae `validateData` a un módulo y crea pruebas unitarias con
-Jest + Testing Library. Ejecuta las pruebas como parte del flujo de CI antes de
-desplegar cambios.
+Ejecuta las pruebas unitarias del validador con:
 
+```bash
+npm test
+```
+
+Las pruebas usan Jest y cubren:
+
+- Caso exitoso con datos válidos.
+- Caso borde con correos inválidos.
+- Caso de error cuando no se aceptan los términos.
+
+Integra este comando en tu pipeline de CI antes de publicar cambios.

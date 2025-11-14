@@ -49,36 +49,6 @@ const showMessage = (text, isError = false) => {
 };
 
 /**
- * Validates form data before sending to Firestore.
- * @param {FormData} data
- * @returns {{ valid: boolean, message?: string }}
- */
-const validateData = (data) => {
-  const name = data.get("fullName")?.trim();
-  const email = data.get("email")?.trim();
-  const phone = data.get("phone")?.trim();
-  const terms = data.get("terms");
-
-  if (!name || name.length < 3) {
-    return { valid: false, message: "Ingresa tu nombre completo." };
-  }
-
-  if (!email || !/^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,}$/.test(email)) {
-    return { valid: false, message: "Correo electrónico inválido." };
-  }
-
-  if (!phone || phone.replace(/\\D/g, "").length < 8) {
-    return { valid: false, message: "Número telefónico inválido." };
-  }
-
-  if (!terms) {
-    return { valid: false, message: "Debes aceptar los términos de uso." };
-  }
-
-  return { valid: true };
-};
-
-/**
  * Handles form submission and Firestore persistence.
  * @param {SubmitEvent} event
  */
@@ -91,7 +61,12 @@ const handleSubmit = async (event) => {
   }
 
   const data = new FormData(form);
-  const validation = validateData(data);
+  const validation = window.validateFields({
+    fullName: data.get("fullName"),
+    email: data.get("email"),
+    phone: data.get("phone"),
+    termsAccepted: Boolean(data.get("terms"))
+  });
 
   if (!validation.valid) {
     showMessage(validation.message, true);
@@ -121,4 +96,3 @@ const handleSubmit = async (event) => {
 };
 
 form.addEventListener("submit", handleSubmit);
-
