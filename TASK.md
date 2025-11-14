@@ -2,7 +2,7 @@
 
 ## Active Tasks
 
-- 2025-11-14 – Integrar TechTaco al branding y volver teléfono opcional.
+_(none)_
 
 ## Completed Tasks
 
@@ -10,6 +10,7 @@
   in Firestore and reveals network password after successful registration.
 - 2025-11-14 – Aplicar branding Grupo Roca + LTH, dejar solo correo/teléfono y
   ajustar copy de confirmación.
+- 2025-11-14 – Integrar TechTaco al branding y volver teléfono opcional.
 
 ## Discovered During Work
 
