@@ -7,6 +7,8 @@
   --color-accent: #00954c;
   --color-accent-strong: #d22730;
   --color-accent-secondary: #005cab;
+  --color-techtaco: #6b4dff;
+  --color-taco: #f4c542;
   --color-error: #ff6b6b;
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
@@ -23,8 +25,10 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at 20% 20%, rgba(0, 149, 76, 0.45), transparent 60%),
-    radial-gradient(circle at 80% 0%, rgba(210, 39, 48, 0.5), transparent 55%), var(--color-bg);
+  background: radial-gradient(circle at 15% 25%, rgba(0, 149, 76, 0.4), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(210, 39, 48, 0.45), transparent 50%),
+    radial-gradient(circle at 60% 80%, rgba(107, 77, 255, 0.35), transparent 60%),
+    var(--color-bg);
   color: var(--color-text);
   display: flex;
   align-items: center;
@@ -67,11 +71,19 @@ body {
   max-width: 120px;
 }
 
+.brand__logo--techtaco {
+  max-width: 90px;
+}
+
 .brand__divider {
   width: 48px;
   height: 2px;
   background: linear-gradient(90deg, var(--color-accent), var(--color-accent-strong));
   border-radius: 999px;
+}
+
+.brand__divider--reverse {
+  background: linear-gradient(90deg, var(--color-accent-strong), var(--color-techtaco));
 }
 
 .card__header {
@@ -86,8 +98,8 @@ body {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  background: rgba(0, 92, 171, 0.15);
-  color: var(--color-accent-secondary);
+  background: linear-gradient(120deg, rgba(0, 92, 171, 0.2), rgba(107, 77, 255, 0.25));
+  color: var(--color-techtaco);
   margin-bottom: var(--space-sm);
 }
 
@@ -125,6 +137,13 @@ body {
   background: rgba(255, 255, 255, 0.04);
   color: var(--color-text);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form__field small {
+  display: block;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
 .form__field input:focus {

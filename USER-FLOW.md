@@ -2,8 +2,8 @@
 
 1. Visitor lands on the registration page and sees a short description of the
    public network rules.
-2. Visitor ingresa correo y teléfono (ambos obligatorios) y confirma el aviso
-   de privacidad implícito.
+2. Visitor ingresa correo (obligatorio) y, de forma opcional, teléfono para
+   seguimiento; acepta el aviso de privacidad implícito.
 3. Visitor submits the form.
 4. Form validates locally; if valid, a loading state appears while Firestore
    stores the record.

@@ -10,6 +10,15 @@ describe("validateFields", () => {
     expect(result).toEqual({ valid: true });
   });
 
+  it("accepts submissions without phone", () => {
+    const result = validateFields({
+      email: "ana@example.com",
+      phone: "",
+    });
+
+    expect(result).toEqual({ valid: true });
+  });
+
   it("rejects malformed emails", () => {
     const result = validateFields({
       email: "ana@",

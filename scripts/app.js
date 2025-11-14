@@ -60,9 +60,11 @@ const handleSubmit = async (event) => {
   }
 
   const data = new FormData(form);
+  const emailValue = data.get("email");
+  const phoneValue = data.get("phone");
   const validation = window.validateFields({
-    email: data.get("email"),
-    phone: data.get("phone"),
+    email: emailValue,
+    phone: phoneValue,
   });
 
   if (!validation.valid) {
@@ -74,11 +76,17 @@ const handleSubmit = async (event) => {
   showMessage("Guardando registro...");
 
   try {
-    await db.collection("publicNetworkRegistrations").add({
-      email: data.get("email").trim(),
-      phone: data.get("phone").trim(),
+    const payload = {
+      email: emailValue.trim(),
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    });
+    };
+
+    const normalizedPhone = phoneValue?.trim();
+    if (normalizedPhone) {
+      payload.phone = normalizedPhone;
+    }
+
+    await db.collection("publicNetworkRegistrations").add(payload);
 
     showMessage(
       "Registro guardado. Ya puedes conectarte a RedTechTaco_LTHROCA."

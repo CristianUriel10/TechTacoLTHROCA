@@ -13,7 +13,7 @@
   <body>
     <main class="page">
       <section class="card">
-        <header class="brand">
+        <header class="brand" aria-label="Marcas asociadas Grupo Roca, LTH y TechTaco">
           <img
             src="./assets/logo-grupo-roca.png"
             alt="Logo Grupo Roca"
@@ -21,11 +21,21 @@
           />
           <span class="brand__divider" aria-hidden="true"></span>
           <img src="./assets/logo-lth.png" alt="Logo LTH" class="brand__logo brand__logo--lth" />
+          <span class="brand__divider brand__divider--reverse" aria-hidden="true"></span>
+          <img
+            src="./assets/logo-techtaco.png"
+            alt="Logo TechTaco"
+            class="brand__logo brand__logo--techtaco"
+          />
         </header>
 
         <div class="card__header">
           <p class="eyebrow">RedTechTaco_LTHROCA</p>
-          <h1>Conexión segura Grupo Roca + LTH</h1>
+          <h1>Conexión segura Grupo Roca + LTH + TechTaco</h1>
+          <p>
+            Déjanos tu correo y, si lo deseas, tu teléfono para confirmar tu acceso. Guardamos la
+            información en Firebase y la usamos solo para el control interno de la red.
+          </p>
         </div>
 
         <form id="registration-form" class="form" novalidate>
@@ -34,8 +44,15 @@
             <input type="email" id="email" name="email" autocomplete="email" required />
           </label>
           <label class="form__field">
-            <span>Teléfono</span>
-            <input type="tel" id="phone" name="phone" autocomplete="tel" required />
+            <span>Teléfono (opcional)</span>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              autocomplete="tel"
+              placeholder="+52 55 1234 5678"
+            />
+            <small>Solo lo usamos para confirmar tu visita, puedes dejarlo vacío.</small>
           </label>
           <button type="submit" class="button">
             <span class="button__text">Registrarme</span>

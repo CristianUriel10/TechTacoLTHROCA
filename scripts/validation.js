@@ -12,9 +12,11 @@ const validateFields = (fields) => {
     return { valid: false, message: "Correo electrónico inválido." };
   }
 
-  const numeralsOnly = trimmedPhone?.replace(/\D/g, "");
-  if (!numeralsOnly || numeralsOnly.length < 8) {
-    return { valid: false, message: "Número telefónico inválido." };
+  if (trimmedPhone) {
+    const numeralsOnly = trimmedPhone.replace(/\D/g, "");
+    if (numeralsOnly.length < 8) {
+      return { valid: false, message: "Número telefónico inválido." };
+    }
   }
 
   return { valid: true };

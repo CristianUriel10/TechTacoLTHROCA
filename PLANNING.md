@@ -16,12 +16,14 @@ submission completes successfully.
 ## Styling Guidelines
 
 - Mantain a single-column responsive layout focused on conversions.
-- Use CSS variables with the Grupo Roca + LTH palette:
+- Use CSS variables with the Grupo Roca + LTH + TechTaco palette:
   - Verde corporativo `#00954c`
   - Rojo LTH `#d22730`
   - Azul acento `#005cab`
   - Gris grafito `#2c2c2c`
-- Showcase both logos in the hero/header area with adequate spacing and
+  - Morado TechTaco `#6b4dff`
+  - Amarillo taco `#f4c542`
+- Showcase Grupo Roca, LTH y TechTaco logos en el hero con separación adecuada y
   alt-text for accessibility.
 - Keep files under 300 lines by splitting CSS/JS where necessary.
 

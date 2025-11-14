@@ -2,7 +2,7 @@
 
 ## Active Tasks
 
-_(none)_
+- 2025-11-14 – Integrar TechTaco al branding y volver teléfono opcional.
 
 ## Completed Tasks
 
