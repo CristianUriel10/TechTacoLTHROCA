@@ -168,7 +168,7 @@ body {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  background: linear-gradient(120deg, var(--color-accent), var(--color-accent-strong));
+  background: var(--color-techtaco);
   color: #fff;
   display: inline-flex;
   align-items: center;

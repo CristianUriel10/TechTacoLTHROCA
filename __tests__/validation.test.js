@@ -4,7 +4,7 @@ describe("validateFields", () => {
   it("accepts a valid payload", () => {
     const result = validateFields({
       email: "ana@example.com",
-      phone: "+52 55 1234 5678",
+      phone: "55 1234 5678",
     });
 
     expect(result).toEqual({ valid: true });
