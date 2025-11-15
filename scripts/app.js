@@ -7,9 +7,7 @@ const firebaseConfig = {
   appId: "1:579061670376:web:58f0104856280e1f8a845d",
 };
 
-const NETWORK_SSID = "RedTechTaco_LTHROCA";
 const NETWORK_PASSWORD = "TacoLTHR0!2025";
-const LOCAL_STORAGE_KEY = "techtacoRegistrationComplete";
 /**
  * Initializes Firebase app safely.
  * @returns {firebase.firestore.Firestore | null}
@@ -31,11 +29,8 @@ const form = document.getElementById("registration-form");
 const messageEl = document.getElementById("form-message");
 const buttonEl = form.querySelector(".button");
 const wifiEl = document.getElementById("wifi-credentials");
-const thankYouEl = document.getElementById("thank-you");
 const copyPasswordBtn = document.getElementById("copy-password");
 const copyFeedbackEl = document.getElementById("copy-feedback");
-const returningBanner = document.getElementById("returning-banner");
-const verificationMessage = document.getElementById("verification-message");
 
 /**
  * Updates submit button loading state.
@@ -56,57 +51,6 @@ const showMessage = (text, isError = false) => {
   messageEl.classList.toggle("form__message--error", isError);
 };
 
-const hideVerificationMessage = () => {
-  if (verificationMessage) {
-    verificationMessage.hidden = true;
-  }
-};
-
-const showVerificationMessage = (text) => {
-  if (verificationMessage) {
-    verificationMessage.textContent = text;
-    verificationMessage.hidden = false;
-  }
-};
-
-const markLocalRegistration = () => {
-  try {
-    localStorage.setItem(LOCAL_STORAGE_KEY, "true");
-  } catch (error) {
-    console.warn("Local storage unavailable", error);
-  }
-};
-
-const hasLocalRegistration = () => {
-  try {
-    return localStorage.getItem(LOCAL_STORAGE_KEY) === "true";
-  } catch (error) {
-    return false;
-  }
-};
-
-const showReturningState = () => {
-  if (returningBanner) {
-    returningBanner.hidden = false;
-  }
-  hideVerificationMessage();
-  form.hidden = true;
-  wifiEl.hidden = true;
-  if (thankYouEl) {
-    thankYouEl.hidden = false;
-  }
-};
-
-const showThankYouScreen = () => {
-  if (wifiEl) {
-    wifiEl.hidden = true;
-  }
-  hideVerificationMessage();
-  if (thankYouEl) {
-    thankYouEl.hidden = false;
-  }
-};
-
 const handleCopyPassword = async () => {
   if (!navigator.clipboard) {
     if (copyFeedbackEl) {
@@ -119,10 +63,9 @@ const handleCopyPassword = async () => {
   try {
     await navigator.clipboard.writeText(NETWORK_PASSWORD);
     if (copyFeedbackEl) {
-      copyFeedbackEl.textContent = "Contraseña copiada. Gracias por tu visita.";
+      copyFeedbackEl.textContent =
+        "Contraseña copiada. ¡Listo para conectarte!";
     }
-    markLocalRegistration();
-    showThankYouScreen();
   } catch (error) {
     console.error("Clipboard error", error);
     if (copyFeedbackEl) {
@@ -160,18 +103,6 @@ const isEmailRegistered = async (email) => {
     console.error("Email duplicate check failed", error);
     return false;
   }
-};
-
-const evaluateReturningVisitor = () => {
-  showVerificationMessage("Verificando tu registro anterior...");
-
-  if (hasLocalRegistration()) {
-    showReturningState();
-    return;
-  }
-
-  hideVerificationMessage();
-  form.hidden = false;
 };
 
 /**
@@ -215,9 +146,10 @@ const handleSubmit = async (event) => {
 
     const alreadyRegisteredByEmail = await isEmailRegistered(payload.email);
     if (alreadyRegisteredByEmail) {
-      showMessage("Este correo ya está registrado. Gracias por tu visita.");
-      markLocalRegistration();
-      showReturningState();
+      showMessage(
+        "Este correo ya está registrado. Usa tus datos existentes.",
+        true
+      );
       setLoading(false);
       return;
     }
@@ -229,13 +161,9 @@ const handleSubmit = async (event) => {
     showMessage(
       "Registro guardado. Ya puedes conectarte a RedTechTaco_LTHROCA."
     );
-    markLocalRegistration();
     form.hidden = true;
     if (wifiEl) {
       wifiEl.hidden = false;
-    }
-    if (thankYouEl) {
-      thankYouEl.hidden = true;
     }
     form.reset();
   } catch (error) {
@@ -251,5 +179,3 @@ form.addEventListener("submit", handleSubmit);
 if (copyPasswordBtn) {
   copyPasswordBtn.addEventListener("click", handleCopyPassword);
 }
-
-evaluateReturningVisitor();

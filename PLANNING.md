@@ -32,12 +32,10 @@ submission completes successfully.
 1. User fills out registration form.
 2. Client validates fields.
 3. Client writes record (email + optional phone) to Firestore collection
-   `publicNetworkRegistrations`.
+   `publicNetworkRegistrations`, evitando correos duplicados.
 4. On success, the Wi-Fi credentials appear con un botón para copiar.
-5. Tras copiar se muestra pantalla de agradecimiento y se marca el dispositivo
-   en `localStorage`.
-6. Las visitas con esa marca local saltan directo al mensaje de “ya registrado”
-   (no se muestra formulario ni contraseña).
+5. El formulario se oculta tras un registro exitoso; para ver la contraseña de
+   nuevo basta volver a llenar el formulario.
 
 ## Testing Strategy
 

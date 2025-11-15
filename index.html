@@ -30,21 +30,14 @@
         </header>
 
         <div class="card__header">
-          <p id="returning-banner" class="banner" hidden>
-            Ya registraste tu visita. ¡Gracias por regresar!
-          </p>
           <p class="eyebrow">RedTechTaco_LTHROCA</p>
           <h1>Conexión segura Grupo Roca + LTH + TechTaco</h1>
           <p>
-            Déjanos tu correo y, si lo deseas, tu teléfono para confirmar tu acceso. Guardamos la
-            información en Firebase y la usamos solo para el control interno de la red.
-          </p>
-          <p id="verification-message" class="status-message">
-            Verificando tu registro anterior...
+            Déjanos tu correo y, si lo deseas, tu teléfono para confirmar tu acceso.
           </p>
         </div>
 
-        <form id="registration-form" class="form" novalidate hidden>
+        <form id="registration-form" class="form" novalidate>
           <label class="form__field">
             <span>Correo electrónico</span>
             <input type="email" id="email" name="email" autocomplete="email" required />
@@ -89,14 +82,6 @@
             </button>
             <p id="copy-feedback" class="copy-feedback" role="status"></p>
           </div>
-        </section>
-
-        <section id="thank-you" class="thanks" hidden>
-          <h2>¡Gracias por tu visita!</h2>
-          <p>
-            Tu sesión quedó registrada. Cuando necesites conectarte de nuevo, solo vuelve a abrir esta
-            página y estaremos listos para ayudarte.
-          </p>
         </section>
       </section>
     </main>

@@ -1,10 +1,9 @@
 # TechTaco Public Network Registration
 
 Formulario estático con branding Grupo Roca + LTH + TechTaco que guarda correo
-y, opcionalmente, teléfono en Firebase Firestore, muestra las credenciales con
-un botón para copiar la contraseña y finaliza con una pantalla de
-agradecimiento tras el copiado. Mediante `localStorage` detecta visitas
-recurrentes y evita que el formulario/contraseña se muestren nuevamente.
+y, opcionalmente, teléfono en Firebase Firestore. Tras un registro exitoso se
+oculta el formulario, se muestran las credenciales con un botón para copiar la
+contraseña y se evita crear entradas duplicadas por correo.
 “Ya te puedes conectar a RedTechTaco_LTHROCA. La contraseña es TacoLTHR0!2025”.
 
 ## Puesta en marcha
