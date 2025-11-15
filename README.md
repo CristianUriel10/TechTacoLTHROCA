@@ -50,5 +50,6 @@ Las pruebas usan Jest y cubren:
 - Caso borde con correos inválidos.
 - Caso exitoso sin teléfono.
 - Caso de error cuando el teléfono proporcionado no cumple el mínimo de dígitos.
+- Caso de error cuando no se acepta el checkbox de promociones.
 
 Integra este comando en tu pipeline de CI antes de publicar cambios.

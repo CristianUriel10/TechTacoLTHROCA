@@ -1,6 +1,6 @@
 /**
  * Validates registration fields for the Wi-Fi form.
- * @param {{ email: string, phone: string }} fields
+ * @param {{ email: string, phone: string, marketingAccepted: boolean }} fields
  * @returns {{ valid: boolean, message?: string }}
  */
 const validateFields = (fields) => {
@@ -17,6 +17,13 @@ const validateFields = (fields) => {
     if (numeralsOnly.length < 8) {
       return { valid: false, message: "Número telefónico inválido." };
     }
+  }
+
+  if (!fields.marketingAccepted) {
+    return {
+      valid: false,
+      message: "Debes aceptar las condiciones de uso y comunicación.",
+    };
   }
 
   return { valid: true };

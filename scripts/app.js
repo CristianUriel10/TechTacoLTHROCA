@@ -51,6 +51,15 @@ const showMessage = (text, isError = false) => {
   messageEl.classList.toggle("form__message--error", isError);
 };
 
+const showWifiCredentials = () => {
+  if (form) {
+    form.hidden = true;
+  }
+  if (wifiEl) {
+    wifiEl.hidden = false;
+  }
+};
+
 const handleCopyPassword = async () => {
   if (!navigator.clipboard) {
     if (copyFeedbackEl) {
@@ -126,6 +135,7 @@ const handleSubmit = async (event) => {
   const validation = window.validateFields({
     email: emailValue,
     phone: phoneValue,
+    marketingAccepted: form.elements.marketing.checked,
   });
 
   if (!validation.valid) {
@@ -149,10 +159,7 @@ const handleSubmit = async (event) => {
 
     const alreadyRegisteredByEmail = await isEmailRegistered(payload.email);
     if (alreadyRegisteredByEmail) {
-      showMessage(
-        "Este correo ya está registrado. Usa tus datos existentes.",
-        true
-      );
+      showMessage("Este correo ya está registrado.", true);
       setLoading(false);
       return;
     }
@@ -164,10 +171,7 @@ const handleSubmit = async (event) => {
     showMessage(
       "Registro guardado. Ya puedes conectarte a RedTechTaco_LTHROCA."
     );
-    form.hidden = true;
-    if (wifiEl) {
-      wifiEl.hidden = false;
-    }
+    showWifiCredentials();
     form.reset();
   } catch (error) {
     console.error("Firestore write error", error);
