@@ -54,6 +54,8 @@ const showMessage = (text, isError = false) => {
 const showWifiCredentials = () => {
   if (form) {
     form.hidden = true;
+    form.classList.add("form--hidden");
+    form.setAttribute("aria-hidden", "true");
   }
   if (wifiEl) {
     wifiEl.hidden = false;
