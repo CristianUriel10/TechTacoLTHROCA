@@ -222,9 +222,15 @@ body {
 .wifi__actions {
   margin-top: var(--space-md);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: var(--space-xs);
   align-items: center;
+  justify-content: flex-end;
+}
+
+.button__icon {
+  font-size: 1.1rem;
+  line-height: 1;
 }
 
 .copy-feedback {
@@ -233,7 +239,7 @@ body {
   color: var(--color-muted);
 }
 
-.wifi dl {
+.wifi__details {
   margin: 0;
 }
 
@@ -249,6 +255,15 @@ body {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--color-accent-secondary);
+}
+
+.wifi--copied .wifi__details {
+  display: none;
+}
+
+.wifi--copied .copy-feedback {
+  color: var(--color-accent);
+  font-weight: 600;
 }
 
 @keyframes spin {

@@ -63,10 +63,9 @@
         <section id="wifi-credentials" class="wifi" hidden>
           <h2>¡Registro exitoso!</h2>
           <p>
-            Ya te puedes conectar a nuestra red <strong>RedTechTaco_LTHROCA</strong>. La contraseña es
-            <strong>TacoLTHR0!2025</strong>.
+            Ya te puedes conectar a nuestra red <strong>RedTechTaco_LTHROCA</strong>.
           </p>
-          <dl>
+          <dl class="wifi__details">
             <div>
               <dt>Nombre de red (SSID)</dt>
               <dd id="wifi-ssid">RedTechTaco_LTHROCA</dd>
@@ -77,8 +76,8 @@
             </div>
           </dl>
           <div class="wifi__actions">
-            <button type="button" id="copy-password" class="button button--ghost">
-              Copiar contraseña
+            <button type="button" id="copy-password" class="button button--ghost" aria-label="Copiar contraseña">
+              <span class="button__icon" aria-hidden="true">📋</span>
             </button>
             <p id="copy-feedback" class="copy-feedback" role="status"></p>
           </div>

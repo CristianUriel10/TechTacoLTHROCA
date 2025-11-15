@@ -66,6 +66,9 @@ const handleCopyPassword = async () => {
       copyFeedbackEl.textContent =
         "Contraseña copiada. ¡Listo para conectarte!";
     }
+    if (wifiEl) {
+      wifiEl.classList.add("wifi--copied");
+    }
   } catch (error) {
     console.error("Clipboard error", error);
     if (copyFeedbackEl) {
