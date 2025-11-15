@@ -5,9 +5,11 @@
 2. Visitor ingresa correo (obligatorio) y, de forma opcional, teléfono para
    seguimiento; acepta el aviso de privacidad implícito.
 3. Visitor submits the form.
-4. El cliente obtiene una IP pública ligera y verifica si ya existe un registro
-   previo; si es así se muestra un mensaje de “registro existente”.
-5. Si no hay registro previo, el formulario valida datos y guarda en Firestore.
+4. El cliente revisa en `localStorage` si el dispositivo ya completó el
+   registro; si es así, se muestra el mensaje de “registro existente”.
+5. Si no hay marca local, el formulario valida datos y guarda en Firestore
+   (bloqueando correos duplicados).
 6. Se muestran las credenciales Wi-Fi con un botón para copiar contraseña.
-7. Al copiar, la interfaz cambia a una pantalla de agradecimiento.
-8. En caso de error, un mensaje indica que intente nuevamente.
+7. Al copiar, la interfaz cambia a una pantalla de agradecimiento y se marca el
+   dispositivo.
+8. En visitas futuras con la marca, solo se muestra el mensaje de agradecimiento.

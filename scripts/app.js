@@ -10,7 +10,6 @@ const firebaseConfig = {
 const NETWORK_SSID = "RedTechTaco_LTHROCA";
 const NETWORK_PASSWORD = "TacoLTHR0!2025";
 const LOCAL_STORAGE_KEY = "techtacoRegistrationComplete";
-const IP_ENDPOINT = "https://api.ipify.org?format=json";
 /**
  * Initializes Firebase app safely.
  * @returns {firebase.firestore.Firestore | null}
@@ -37,8 +36,6 @@ const copyPasswordBtn = document.getElementById("copy-password");
 const copyFeedbackEl = document.getElementById("copy-feedback");
 const returningBanner = document.getElementById("returning-banner");
 const verificationMessage = document.getElementById("verification-message");
-
-let clientIp = null;
 
 /**
  * Updates submit button loading state.
@@ -134,20 +131,6 @@ const handleCopyPassword = async () => {
   }
 };
 
-const fetchClientIp = async () => {
-  try {
-    const response = await fetch(IP_ENDPOINT);
-    if (!response.ok) {
-      throw new Error("IP response not ok");
-    }
-    const data = await response.json();
-    return data.ip;
-  } catch (error) {
-    console.warn("IP fetch failed", error);
-    return null;
-  }
-};
-
 const isEmailRegistered = async (email) => {
   if (!db || !email) {
     return false;
@@ -179,7 +162,7 @@ const isEmailRegistered = async (email) => {
   }
 };
 
-const evaluateReturningVisitor = async () => {
+const evaluateReturningVisitor = () => {
   showVerificationMessage("Verificando tu registro anterior...");
 
   if (hasLocalRegistration()) {
@@ -187,7 +170,6 @@ const evaluateReturningVisitor = async () => {
     return;
   }
 
-  clientIp = await fetchClientIp();
   hideVerificationMessage();
   form.hidden = false;
 };
@@ -233,18 +215,11 @@ const handleSubmit = async (event) => {
 
     const alreadyRegisteredByEmail = await isEmailRegistered(payload.email);
     if (alreadyRegisteredByEmail) {
-      showMessage(
-        "Este correo ya está registrado. Usa la contraseña mostrada."
-      );
+      showMessage("Este correo ya está registrado. Gracias por tu visita.");
       markLocalRegistration();
-      wifiEl.hidden = false;
-      thankYouEl.hidden = true;
+      showReturningState();
       setLoading(false);
       return;
-    }
-
-    if (clientIp) {
-      payload.ip = clientIp;
     }
 
     payload.emailNormalized = payload.email.toLowerCase();
@@ -255,6 +230,7 @@ const handleSubmit = async (event) => {
       "Registro guardado. Ya puedes conectarte a RedTechTaco_LTHROCA."
     );
     markLocalRegistration();
+    form.hidden = true;
     if (wifiEl) {
       wifiEl.hidden = false;
     }

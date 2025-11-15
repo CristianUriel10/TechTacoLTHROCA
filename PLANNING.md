@@ -31,13 +31,13 @@ submission completes successfully.
 
 1. User fills out registration form.
 2. Client validates fields.
-3. Client fetches a lightweight IP fingerprint to detect returning visitors.
-4. Client writes record (email + optional phone + IP) to Firestore collection
+3. Client writes record (email + optional phone) to Firestore collection
    `publicNetworkRegistrations`.
-5. On success, the Wi-Fi credentials appear with a copy-to-clipboard action.
-6. After copying, the UI transitions to a thank-you screen.
-7. Returning visits detected via stored IP/local flag display a “ya registrado”
-   notice instead of the full form.
+4. On success, the Wi-Fi credentials appear con un botón para copiar.
+5. Tras copiar se muestra pantalla de agradecimiento y se marca el dispositivo
+   en `localStorage`.
+6. Las visitas con esa marca local saltan directo al mensaje de “ya registrado”
+   (no se muestra formulario ni contraseña).
 
 ## Testing Strategy
 
