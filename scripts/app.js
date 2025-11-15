@@ -148,20 +148,33 @@ const fetchClientIp = async () => {
   }
 };
 
-const checkExistingRegistration = async (ip) => {
-  if (!db || !ip) {
+const isEmailRegistered = async (email) => {
+  if (!db || !email) {
     return false;
   }
 
+  const normalized = email.toLowerCase();
+
   try {
-    const snapshot = await db
+    const normalizedSnapshot = await db
       .collection("publicNetworkRegistrations")
-      .where("ip", "==", ip)
+      .where("emailNormalized", "==", normalized)
       .limit(1)
       .get();
-    return !snapshot.empty;
+
+    if (!normalizedSnapshot.empty) {
+      return true;
+    }
+
+    const legacySnapshot = await db
+      .collection("publicNetworkRegistrations")
+      .where("email", "==", email)
+      .limit(1)
+      .get();
+
+    return !legacySnapshot.empty;
   } catch (error) {
-    console.error("Returning check failed", error);
+    console.error("Email duplicate check failed", error);
     return false;
   }
 };
@@ -175,20 +188,8 @@ const evaluateReturningVisitor = async () => {
   }
 
   clientIp = await fetchClientIp();
-  if (!clientIp) {
-    hideVerificationMessage();
-    form.hidden = false;
-    return;
-  }
-
-  const alreadyRegistered = await checkExistingRegistration(clientIp);
-  if (alreadyRegistered) {
-    markLocalRegistration();
-    showReturningState();
-  } else {
-    hideVerificationMessage();
-    form.hidden = false;
-  }
+  hideVerificationMessage();
+  form.hidden = false;
 };
 
 /**
@@ -230,9 +231,23 @@ const handleSubmit = async (event) => {
       payload.phone = normalizedPhone;
     }
 
+    const alreadyRegisteredByEmail = await isEmailRegistered(payload.email);
+    if (alreadyRegisteredByEmail) {
+      showMessage(
+        "Este correo ya está registrado. Usa la contraseña mostrada."
+      );
+      markLocalRegistration();
+      wifiEl.hidden = false;
+      thankYouEl.hidden = true;
+      setLoading(false);
+      return;
+    }
+
     if (clientIp) {
       payload.ip = clientIp;
     }
+
+    payload.emailNormalized = payload.email.toLowerCase();
 
     await db.collection("publicNetworkRegistrations").add(payload);
 
