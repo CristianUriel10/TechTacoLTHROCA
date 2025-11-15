@@ -63,6 +63,12 @@ body {
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
 }
 
+.brand__logo_2 {
+  height: 90px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
 .brand__logo--roca {
   max-width: 140px;
 }
